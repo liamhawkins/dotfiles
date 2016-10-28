@@ -20,6 +20,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
