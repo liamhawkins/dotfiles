@@ -222,7 +222,7 @@ if [ $? -eq 0 ]; then \
     fi) '$BYellow$PathShort$Color_Off'\$ "; \
 else \
     # @2 - Prompt when not in GIT repo
-    echo " '$Yellow$PathShort$Color_Off'\$ "; \
+    echo " '$BYellow$PathShort$Color_Off'\$ "; \
 fi)'
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
