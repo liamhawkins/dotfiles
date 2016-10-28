@@ -43,4 +43,7 @@ set expandtab
 set cursorline
 set showmatch
 
-
+" Vim remembers where you left off
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
