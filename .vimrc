@@ -34,6 +34,7 @@ set t_Co=256
 colorscheme zenburn
 
 set rnu
+set number
 
 set laststatus=2
 
