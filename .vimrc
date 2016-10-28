@@ -9,14 +9,17 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
+
+
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'jnurmine/Zenburn'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -48,3 +51,19 @@ set showmatch
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Start NERDTree automatically when vim starts up with no files specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Toggle NERDTree with hotkey CTRL+n
+map <C-n> :NERDTreeToggle<CR>
+
+" Show hidden files by default
+let NERDTreeShowHidden=1
+
+" Close NERDTree after opening a file
+let NERDTreeQuitOnOpen = 1
+
+" Close vim if only window open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
