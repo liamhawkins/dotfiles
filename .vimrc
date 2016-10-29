@@ -68,3 +68,8 @@ let NERDTreeQuitOnOpen = 1
 
 " Close vim if only window open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Source .vimrc file when saving
+if has("autocmd")
+    autocmd bufwritepost .vimrc source $MYVIMRC
+endif
