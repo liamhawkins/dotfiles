@@ -1,0 +1,11 @@
+[push]
+	default = upstream
+[merge]
+	conflictstyle = diff3
+[user]
+	email = liamhawkinscu@gmail.com
+	name = Liam Hawkins
+[core]
+	editor = vim
+[credential]
+	helper = cache --timeout=3600
