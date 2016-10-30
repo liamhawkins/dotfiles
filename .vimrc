@@ -29,6 +29,8 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set shell=/bin/bash
+
 set encoding=utf-8
 
 let python_highlight_all=1
@@ -73,3 +75,4 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 if has("autocmd")
     autocmd bufwritepost .vimrc source $MYVIMRC
 endif
+
