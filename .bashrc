@@ -221,10 +221,10 @@ if [ $? -eq 0 ]; then \
     else \
         # @5 - Changes to working tree
         echo "'$IRed'"$(__git_ps1 " {%s}"); \
-    fi) '$BYellow$PathShort$Color_Off'\$ "; \
+    fi) '$BBlue$PathShort$Color_Off'\$ "; \
 else \
     # @2 - Prompt when not in GIT repo
-    echo " '$BYellow$PathShort$Color_Off'\$ "; \
+    echo " '$BBlue$PathShort$Color_Off'\$ "; \
 fi)'
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
