@@ -383,6 +383,16 @@ statusbar = {
   };
 };
 settings = {
-  core = { real_name = "Liam"; user_name = "liam"; nick = "liam"; };
+  core = {
+    real_name = "Liam";
+    user_name = "liam";
+    nick = "liam";
+    timestamp_format = "%I:%M";
+  };
   "fe-text" = { actlist_sort = "refnum"; };
+  "perl/core/scripts" = {
+    trackbar_string = "\"---\"";
+    trackbar_style = "%R";
+  };
+  "fe-common/core" = { theme = "defaultmod.theme"; };
 };
