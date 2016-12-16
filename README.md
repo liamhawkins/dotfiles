@@ -1,2 +1,2 @@
 # dotfiles
-run makesymlinks.sh on to symlink dotfiles into ~
+run makesymlinks.sh to symlink dotfiles into ~
