@@ -385,8 +385,8 @@ statusbar = {
 settings = {
   core = {
     real_name = "Liam";
-    user_name = "liam";
-    nick = "liam";
+    user_name = "SecretAg3nt";
+    nick = "SecretAg3nt";
     timestamp_format = "%I:%M";
   };
   "fe-text" = { actlist_sort = "refnum"; };
