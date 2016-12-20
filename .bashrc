@@ -232,3 +232,11 @@ else \
 fi)'
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+export WORKON_HOME=$HOME/dev/.virtualenvs
+export PROJECT_HOME=$HOME/dev
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.5
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+
+source /usr/local/bin/virtualenvwrapper.sh
