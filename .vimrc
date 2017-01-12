@@ -50,6 +50,9 @@ set expandtab
 set cursorline
 set showmatch
 
+" F2 Toggles Paste Mode
+set pastetoggle=<F2>
+
 " Vim remembers where you left off
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
