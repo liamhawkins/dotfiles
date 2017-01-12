@@ -37,7 +37,8 @@ let python_highlight_all=1
 syntax on
 
 set t_Co=256
-colorscheme zenburn
+colorscheme neodark
+hi Normal ctermbg=NONE
 
 set rnu
 set number
