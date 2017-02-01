@@ -15,12 +15,11 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'jnurmine/Zenburn'
 Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
+Plugin 'w0rp/ale'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -37,7 +36,7 @@ let python_highlight_all=1
 syntax on
 
 set t_Co=256
-colorscheme neodark
+colorscheme space-vim-dark
 hi Normal ctermbg=NONE
 
 set rnu

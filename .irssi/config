@@ -403,9 +403,10 @@ settings = {
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = {
     trackbar_string = "\"---\"";
-    trackbar_style = "%R";
+    trackbar_style = "%b";
     awl_shared_sbar = "OFF";
     awl_viewer = "no";
+    trackbar_timestamp_styled = "no";
   };
   "fe-common/core" = { theme = "defaultmod.theme"; };
 };
