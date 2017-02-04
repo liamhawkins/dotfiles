@@ -12,7 +12,6 @@ call vundle#begin()
 
 
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'nvie/vim-flake8'
@@ -20,6 +19,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'Yggdroot/indentLine'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -30,13 +31,15 @@ filetype plugin indent on    " required
 
 set shell=/bin/bash
 
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
 set encoding=utf-8
 
 let python_highlight_all=1
 syntax on
 
 set t_Co=256
-colorscheme space-vim-dark
+colorscheme neodark
 hi Normal ctermbg=NONE
 
 set rnu
@@ -49,6 +52,12 @@ set autoindent
 set expandtab
 set cursorline
 set showmatch
+
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " F2 Toggles Paste Mode
 set pastetoggle=<F2>
@@ -79,3 +88,8 @@ if has("autocmd")
     autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+
+set ttimeoutlen=50
+
+let mapleader = ","
+autocmd FileType python nnoremap <Leader>= :0,$!yapf<CR>
