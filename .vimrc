@@ -25,6 +25,8 @@ Plugin 'w0rp/ale'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'easymotion/vim-easymotion'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -133,3 +135,21 @@ let g:rbpt_colorpairs = [
 
     let g:rbpt_max = 14
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SIMPYLFOLD SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_import = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EASYMOTION SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+nmap s <Plug>(easymotion-s2)
