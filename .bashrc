@@ -96,6 +96,8 @@ alias tmux="tmux -2"
 
 alias weather='ansiweather'
 
+alias rodeo='/opt/Rodeo/rodeo'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

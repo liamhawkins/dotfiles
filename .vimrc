@@ -27,6 +27,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'junegunn/goyo.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
