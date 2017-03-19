@@ -62,6 +62,7 @@ set autoindent
 set expandtab
 set cursorline
 set showmatch
+set showcmd
 
 " F2 Toggles Paste Mode
 set pastetoggle=<F2>
@@ -83,6 +84,20 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " MAPLEADER SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" REMAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap j and k to navigate visual lines when wrapped
+nnoremap j gj
+nnoremap k gk
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTREE SETTINGS
@@ -127,7 +142,6 @@ let g:rbpt_colorpairs = [
     \ ['darkmagenta', 'DarkOrchid3'],
     \ ['brown',       'firebrick3'],
     \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
     \ ['darkmagenta', 'DarkOrchid3'],
     \ ['Darkblue',    'firebrick3'],
     \ ['darkgreen',   'RoyalBlue3'],
