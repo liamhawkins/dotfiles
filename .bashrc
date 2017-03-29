@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -23,12 +25,63 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+##########################################################################
+# ALIASES
+##########################################################################
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CFal'
+
+# assume 256 color support
+alias tmux="tmux -2"
+
+alias weather='ansiweather'
+alias rodeo='/opt/Rodeo/rodeo'
+alias android-studio='/opt/android-studio/bin/studio.sh'
+
+# Add item to taskwarrior inbox
+alias in='task add +in'
+
+# 'tick monday Go to gym', go to gym will appear monday
+tickle () {
+    deadline=$1
+    shift
+    in +tickle wait:$deadline $@
+}
+alias tick=tickle
+
+##########################################################################
+# BASH COMPLETE
+##########################################################################
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+##########################################################################
+# PS1
+##########################################################################
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -72,66 +125,11 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CFal'
-
-alias tmux="tmux -2"
-
-alias weather='ansiweather'
-
-alias rodeo='/opt/Rodeo/rodeo'
-
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
-
-
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
-
 #  SETUP CONSTANTS
 #  Bunch-o-predefined colors.  Makes reading code easier than escape sequences.
 #  I don't remember where I found this.  o_O
-
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
 
@@ -232,12 +230,16 @@ else \
     echo " '$BBlue$PathShort$Color_Off'\$ "; \
 fi)'
 
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# Add number of inbox items from taskwarrior+GTD to PS1
+export PS1='$(task +in +PENDING count) '$PS1
+
+##########################################################################
+# VIRTUALENVWRAPPER
+##########################################################################
 
 export WORKON_HOME=$HOME/dev/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.5
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-
 source /usr/local/bin/virtualenvwrapper.sh
